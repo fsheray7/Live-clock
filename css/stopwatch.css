@@ -1,0 +1,205 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+}
+
+
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b2e4a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2b2e4a;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #f92672;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #2b2e4a;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* =========================
+   APP CARD
+========================= */
+.app {
+  position: relative;
+  padding: 60px 70px;
+  border-radius: 28px;
+  background: #ffffff;
+  text-align: center;
+  z-index: 0;
+}
+.app::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 34px;
+  background: conic-gradient(#6a11cb, #2575fc, #20e3b2, #fddb92, #6a11cb);
+  animation: spin 20s linear infinite;
+  z-index: -1;
+}
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 22px;
+  background: #ffffff;
+  z-index: 0;
+}
+.app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* TIMER */
+#timer {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #2b2e4a;
+  margin-bottom: 40px;
+}
+
+/* BUTTONS */
+#buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+button {
+  background: #f3f4f7;
+  color: #2b2e4a;
+  border: none;
+  border-radius: 18px;
+  padding: 18px 42px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.12), -8px -8px 16px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 12px 12px 22px rgba(0, 0, 0, 0.18), -12px -12px 22px #ffffff;
+}
+button:active {
+  transform: translateY(0);
+  box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.15),
+    inset -6px -6px 12px #ffffff;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ROTATION */
+/* @keyframes spin { to { transform: rotate(360deg); } } */
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .app {
+    padding: 40px 30px;
+  }
+  #timer {
+    font-size: 3.5rem;
+  }
+  button {
+    padding: 14px 28px;
+    font-size: 1.2rem;
+  }
+  nav {
+    gap: 20px;
+  }
+}

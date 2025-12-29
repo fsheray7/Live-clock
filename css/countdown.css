@@ -1,0 +1,303 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b2e4a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2b2e4a;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #f92672;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #2b2e4a;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+
+
+/* =========================
+   CLOCK CARD
+========================= */
+.clock-card {
+  position: relative;
+  padding: 50px 60px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px);
+  text-align: center;
+  overflow: hidden;
+  margin: 20px;
+  width: 480px;
+  z-index: 1;
+}
+
+.clock-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 34px;
+  background: conic-gradient(
+    #6a11cb,
+    #2575fc,
+    #20e3b2,
+    #fddb92,
+    #6a11cb
+  );
+  animation: spin 20s linear infinite;
+  z-index: -1;
+}
+
+.clock-card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.75);
+  z-index: 0;
+}
+
+.clock-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   TIMER DISPLAY
+========================= */
+#timer {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #2b2e4a;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  width: 80px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.08), inset -4px -4px 10px #ffffff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+#buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button {
+  background: #f3f4f7;
+  color: #2b2e4a;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px rgba(0,0,0,0.1), -6px -6px 12px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.15), -10px -10px 20px #ffffff;
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px #ffffff;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================
+   ROTATION
+========================= */
+/* @keyframes spin {
+  to { transform: rotate(360deg); }
+} */
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .clock-card {
+    width: 380px;
+    padding: 40px 50px;
+  }
+
+  #timer {
+    font-size: 4rem;
+  }
+
+  input[type="number"] {
+    width: 70px;
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clock-card {
+    width: 280px;
+    padding: 30px 40px;
+  }
+
+  #timer {
+    font-size: 3rem;
+  }
+
+  input[type="number"] {
+    width: 60px;
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+
+  nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock-card {
+    width: 240px;
+    padding: 25px 30px;
+  }
+
+  #timer {
+    font-size: 2.5rem;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    font-size: 0.8rem;
+    padding: 5px 6px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

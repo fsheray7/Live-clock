@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="css/countdown.css">
+</head>
+<body>
+  <!-- Navbar -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">MyApp</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stopwatch.html">Stopwatch</a></li>
+      <li><a href="countdown.html">Countdown</a></li>
+      <li><a href="alarm.html">Alarm</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Countdown Timer Card -->
+  <div class="clock-card">
+    
+    <h1 id="timer">00:00:00</h1>
+
+    <div class="inputs">
+      <input type="number" id="hours" placeholder="HH" min="0">
+      <input type="number" id="minutes" placeholder="MM" min="0" max="59">
+      <input type="number" id="seconds" placeholder="SS" min="0" max="59">
+    </div>
+
+    <div id="buttons">
+      <button id="start">Start</button>
+      <button id="pause" disabled>Pause</button>
+      <button id="reset" disabled>Reset</button>
+    </div>
+  </div>
+
+  <script src="script/countdown.js"></script>
+</body>
+</html>

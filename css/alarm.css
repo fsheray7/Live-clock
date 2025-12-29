@@ -1,0 +1,237 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b2e4a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2b2e4a;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #f92672;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #2b2e4a;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* =========================
+   CARD
+========================= */
+.card {
+  position: relative;
+  padding: 40px 50px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px);
+  text-align: center;
+  overflow: hidden;
+  margin: 20px;
+  width: 480px;
+  z-index: 1;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 34px;
+  background: conic-gradient(#6a11cb, #2575fc, #20e3b2, #fddb92, #6a11cb);
+  animation: spin 20s linear infinite;
+  z-index: -1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.75);
+  z-index: 0;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #2b2e4a;
+}
+
+input[type="time"], input[type="date"] {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.08), inset -4px -4px 10px #ffffff;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+button {
+  background: #f3f4f7;
+  color: #2b2e4a;
+  border: none;
+  border-radius: 18px;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px rgba(0,0,0,0.1), -6px -6px 12px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.15), -10px -10px 20px #ffffff;
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px #ffffff;
+}
+
+/* =========================
+   ALARM LIST
+========================= */
+#alarm-list {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.alarm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(243,244,247,0.5);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #2b2e4a;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .card {
+    width: 280px;
+    padding: 30px 30px;
+  }
+
+  input[type="time"], input[type="date"] {
+    font-size: 0.9rem;
+  }
+
+  nav {
+    gap: 20px;
+  }
+}

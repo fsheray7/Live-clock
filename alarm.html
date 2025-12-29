@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alarm</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/alarm.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">MyApp</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="stopwatch.html">Stopwatch</a></li>
+      <li><a href="countdown.html">Countdown</a></li>
+      <li><a href="alarm.html">Alarm</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ALARM CARD -->
+<div class="card">
+  <h2>Set Alarm</h2>
+  <label for="alarm-time">Time:</label>
+  <input type="time" id="alarm-time">
+  <label for="alarm-date">Date:</label>
+  <input type="date" id="alarm-date">
+  <button id="set-alarm">Set Alarm</button>
+
+  <div id="alarm-list"></div>
+</div>
+
+<script src="script/alarm.js"></script>
+</body>
+</html>
