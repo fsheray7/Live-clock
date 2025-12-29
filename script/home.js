@@ -56,7 +56,7 @@ fetch('../partials/navbar.html')
     })
     .catch(error => console.error('Error loading navbar:', error));
 
-      // Toggle menu on small screens
+  // Toggle menu on small screens
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
 

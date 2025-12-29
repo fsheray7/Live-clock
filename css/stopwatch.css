@@ -1,88 +1,101 @@
-/* =========================
-   RESET
-========================= */
+/* =========================================================
+   VARIABLES & RESET
+========================================================= */
+:root {
+  --bg-main: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-strong: rgba(255, 255, 255, 0.95);
+  --text-dark: #2b2e4a;
+  --accent: #f92672;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --transition: 0.3s ease;
+  --shadow-soft: 6px 6px 14px rgba(0, 0, 0, 0.1),
+    -6px -6px 14px #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
+/* =========================================================
    BODY
-========================= */
+========================================================= */
 body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  background: var(--bg-main);
+  color: var(--text-dark);
 }
 
-
-
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0 0 auto 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--glass);
   backdrop-filter: blur(20px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-  z-index: 999;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
 }
 
 .nav-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  padding: 14px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  color: #2b2e4a;
 }
 
+/* =========================================================
+   NAV LINKS
+========================================================= */
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 32px;
   list-style: none;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
+  font-size: 1.05rem;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: #2b2e4a;
+  color: var(--text-dark);
   position: relative;
-  transition: 0.3s;
+  transition: color var(--transition);
 }
 
-.nav-links li a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   width: 0;
   height: 2px;
-  background: #f92672;
-  transition: 0.3s;
+  background: var(--accent);
+  transition: width var(--transition);
 }
 
-.nav-links li a:hover::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
-/* =========================
-   HAMBURGER MENU
-========================= */
+/* =========================================================
+   HAMBURGER
+========================================================= */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -91,115 +104,168 @@ nav {
 }
 
 .hamburger span {
-  width: 25px;
+  width: 26px;
   height: 3px;
-  background: #2b2e4a;
-  border-radius: 2px;
-  transition: all 0.3s;
+  background: var(--text-dark);
+  border-radius: 4px;
+  transition: var(--transition);
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
-
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* =========================
+/* =========================================================
    APP CARD
-========================= */
+========================================================= */
 .app {
   position: relative;
-  padding: 60px 70px;
-  border-radius: 28px;
+  padding: 56px 64px;
+  border-radius: var(--radius-lg);
   background: #ffffff;
   text-align: center;
-  z-index: 0;
+  z-index: 1;
 }
+
 .app::before {
   content: "";
   position: absolute;
   inset: -6px;
-  border-radius: 34px;
-  background: conic-gradient(#6a11cb, #2575fc, #20e3b2, #fddb92, #6a11cb);
+  border-radius: calc(var(--radius-lg) + 6px);
+  background: conic-gradient(
+    #6a11cb,
+    #2575fc,
+    #20e3b2,
+    #fddb92,
+    #6a11cb
+  );
   animation: spin 20s linear infinite;
   z-index: -1;
 }
+
 .app::after {
   content: "";
   position: absolute;
   inset: 6px;
-  border-radius: 22px;
+  border-radius: calc(var(--radius-lg) - 6px);
   background: #ffffff;
   z-index: 0;
 }
+
 .app > * {
   position: relative;
   z-index: 1;
 }
 
-/* TIMER */
+/* =========================================================
+   TIMER
+========================================================= */
 #timer {
   font-size: 5rem;
   font-weight: 600;
   letter-spacing: 3px;
-  color: #2b2e4a;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
-/* BUTTONS */
+/* =========================================================
+   BUTTONS
+========================================================= */
 #buttons {
   display: flex;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
 }
+
 button {
-  background: #f3f4f7;
-  color: #2b2e4a;
-  border: none;
-  border-radius: 18px;
-  padding: 18px 42px;
-  font-size: 1.4rem;
+  padding: 16px 40px;
+  font-size: 1.3rem;
   font-weight: 500;
+  border-radius: var(--radius-md);
+  border: none;
+  background: #f3f4f7;
+  color: var(--text-dark);
   cursor: pointer;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.12), -8px -8px 16px #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
 }
+
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 12px 12px 22px rgba(0, 0, 0, 0.18), -12px -12px 22px #ffffff;
 }
+
 button:active {
   transform: translateY(0);
   box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.15),
     inset -6px -6px 12px #ffffff;
 }
+
 button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-/* ROTATION */
-/* @keyframes spin { to { transform: rotate(360deg); } } */
 
-/* RESPONSIVE */
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media (max-width: 768px) {
-  .app {
-    padding: 40px 30px;
+  .hamburger {
+    display: flex;
   }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 220px;
+    height: calc(100% - 70px);
+    background: var(--glass-strong);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    transition: var(--transition);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .app {
+    padding: 40px 32px;
+  }
+
   #timer {
     font-size: 3.5rem;
   }
+
   button {
     padding: 14px 28px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
-  nav {
-    gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 32px 24px;
+  }
+
+  #timer {
+    font-size: 2.8rem;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
   }
 }

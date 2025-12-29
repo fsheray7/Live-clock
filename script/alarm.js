@@ -76,3 +76,20 @@ fetch('../partials/navbar.html')
       });
     })
     .catch(error => console.error('Error loading navbar:', error));
+
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // Close menu when clicking a link (mobile UX)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("open");
+    });
+  });
+

@@ -1,0 +1,5 @@
+- [ ] Add more responsive breakpoints to countdown.css (e.g., 1200px, 600px, 360px)
+- [ ] Make clock-card width more fluid using viewport units
+- [ ] Adjust inputs layout to stack vertically on small screens
+- [ ] Adjust button layout for better responsiveness
+- [ ] Test responsiveness across different screen sizes

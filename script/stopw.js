@@ -53,3 +53,19 @@ startButtonEl.addEventListener("click", startTimer);
 stopButtonEl.addEventListener("click", stopTimer);
 resetButtonEl.addEventListener("click", resetTimer);
 
+
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // Close menu when clicking a link (mobile UX)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("open");
+    });
+  });
