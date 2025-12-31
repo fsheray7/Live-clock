@@ -142,18 +142,21 @@ body {
   width: 40px;
   height: 4px;
   border: 1px solid #070bee;
+  border-radius: 10px;
 }
 
 .minute {
   width: 55px;
   height: 3px;
   border: 1px solid #07b810;
+  border-radius: 8px;
 }
 
 .second {
   width: 65px;
   height: 2px;
   border: 1px solid #ff0808;
+  border-radius: 10px;
 }
 
 .center-dot {
