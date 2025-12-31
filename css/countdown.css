@@ -27,9 +27,11 @@ body {
   background: var(--bg-main);
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  align-items: center;
+  padding: 100px 16px 24px; /* top space for navbar, small bottom padding */
   color: var(--text-dark);
 }
+
 
 /* =========================================================
    NAVBAR
@@ -127,13 +129,20 @@ nav {
 ========================================================= */
 .clock-card {
   position: relative;
-  width: 480px;
+  width: 580px;
+
   padding: 48px 56px;
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   text-align: center;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+ 
 }
 
 .clock-card::before {
@@ -182,7 +191,7 @@ nav {
 .inputs {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   margin-bottom: 24px;
 }
 
@@ -202,9 +211,11 @@ input[type="number"] {
    BUTTONS
 ========================================================= */
 #buttons {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  flex-direction: column;
 }
 
 button {
@@ -238,9 +249,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* =========================================================
-   ANIMATION
-========================================================= */
+
 
 
 /* =========================================================
@@ -248,7 +257,7 @@ button:disabled {
 ========================================================= */
 @media (max-width: 1200px) {
   .clock-card {
-    width: min(85vw, 420px);
+    width: min(85vw, 520px);
     padding: 44px 50px;
   }
   #timer {
@@ -276,8 +285,10 @@ button:disabled {
     top: 70px;
     right: -100%;
     width: 220px;
-    height: calc(100% - 70px);
-    background: var(--glass-strong);
+     height:fit-content;
+    background: rgba(105, 154, 226, 0.98);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 24px;
     gap: 20px;
@@ -300,7 +311,7 @@ button:disabled {
 
 @media (max-width: 600px) {
   .clock-card {
-    width: min(90vw, 260px);
+    width: min(70vw, 660px);
     padding: 28px;
   }
 
@@ -331,7 +342,7 @@ button:disabled {
 
 @media (max-width: 480px) {
   .clock-card {
-    width: min(95vw, 240px);
+    width: min(95vw, 340px);
     padding: 26px;
   }
 
@@ -347,12 +358,16 @@ button:disabled {
 
 @media (max-width: 360px) {
   .clock-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: min(98vw, 220px);
     padding: 20px;
   }
 
   #timer {
     font-size: 2rem;
+    padding-top: 12px;
   }
 
   input[type="number"] {

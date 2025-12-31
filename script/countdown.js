@@ -73,23 +73,6 @@ resetBtn.addEventListener("click", resetCountdown);
 
 
 
-fetch('../partials/navbar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-
-      // Highlight the active page
-      const pageName = window.location.pathname.split("/").pop().split(".")[0];
-      const links = document.querySelectorAll('nav a');
-      links.forEach(link => {
-        if (link.dataset.page === pageName) {
-          link.style.color = '#f92672';   // active color
-          link.style.fontWeight = '700';
-        }
-      });
-    })
-    .catch(error => console.error('Error loading navbar:', error));
-
 
  
 

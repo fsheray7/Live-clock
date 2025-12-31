@@ -225,12 +225,14 @@ button:disabled {
     top: 70px;
     right: -100%;
     width: 220px;
-    height: calc(100% - 70px);
-    background: var(--glass-strong);
+     height:fit-content;
+    background: rgba(105, 154, 226, 0.98);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 24px;
     gap: 20px;
     transition: var(--transition);
+    border-radius: 20px;
   }
 
   .nav-links.open {

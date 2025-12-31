@@ -1,70 +1,93 @@
-/* =========================
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+:root {
+  --bg-main: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  --text-dark: #2b2e4a;
+  --accent: #f92672;
+}
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
+/* =========================================================
    BODY
-========================= */
+========================================================= */
 body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  background: var(--bg-main);
+  color: var(--text-dark);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 80px; /* space for navbar */
+  justify-content: center;
+
+  padding: 100px 16px 32px;
 }
 
-
-/* =========================
-   CLOCK CARDS
-========================= */
+/* =========================================================
+   CLOCK CONTAINER
+========================================================= */
 .clock-container {
   display: flex;
-  gap: 2vw;
+  gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
   align-items: center;
 }
 
+/* =========================================================
+   CLOCK CARD
+========================================================= */
 .clock-card {
   position: relative;
-  padding: clamp(20px, 4vw, 40px) clamp(25px, 5vw, 50px);
+  width: clamp(260px, 32vw, 420px);
+  padding: clamp(24px, 4vw, 48px);
+
   border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   text-align: center;
   overflow: hidden;
-  margin: 1rem;
-  width: clamp(220px, 25%, );
-  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-/* Rotating neon border */
+/* Neon border */
 .clock-card::before {
   content: "";
   position: absolute;
   inset: -6px;
   border-radius: 2.2rem;
-  background: conic-gradient(#6a11cb, #2575fc, #20e3b2, #fddb92, #6a11cb);
+  background: conic-gradient(
+    #6a11cb,
+    #2575fc,
+    #20e3b2,
+    #fddb92,
+    #6a11cb
+  );
   animation: spin 20s linear infinite;
   z-index: -1;
 }
 
-/* Inner card */
+/* Inner surface */
 .clock-card::after {
   content: "";
   position: absolute;
   inset: 6px;
   border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   z-index: 0;
 }
 
@@ -73,172 +96,103 @@ body {
   z-index: 1;
 }
 
-/* =========================
+/* =========================================================
    DIGITAL CLOCK
-========================= */
+========================================================= */
 #timer {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
   font-weight: 600;
   letter-spacing: 2px;
-  color: #2b2e4a;
-  margin-bottom: 0.5rem;
 }
 
 #date {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
   font-weight: 500;
   color: #6a11cb;
 }
 
-/* =========================
+/* =========================================================
    ANALOG CLOCK
-========================= */
+========================================================= */
 .analog-clock {
-  position: relative;
-  width: clamp(120px, 30vw, 180px);
-  height: clamp(120px, 30vw, 180px);
-  border: 0.3rem solid #26f9a8;
+  width: clamp(130px, 22vw, 180px);
+  height: clamp(130px, 22vw, 180px);
+
   border-radius: 50%;
+  border: 0.35rem solid #26f9a8;
   background: rgba(58, 57, 57, 0.15);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.1),
     inset 0 0 15px rgba(255, 0, 200, 0.2);
-  margin: 1rem auto;
-  transform: rotate(-100deg);
+
+  position: relative;
 }
 
+/* Clock hands */
 .hand {
   position: absolute;
-  width: 50%;
-  height: 0.2rem;
   top: 50%;
   left: 50%;
   transform-origin: 0% 50%;
-  transform: rotate(0deg);
-  transition: all 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+  transition: 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
 }
 
 .hour {
-  height: 0.35rem;
-  background: #2575fc;
+  width: 40px;
+  height: 4px;
+  border: 1px solid #070bee;
 }
+
 .minute {
-  height: 0.25rem;
-  background: #20e3b2;
+  width: 55px;
+  height: 3px;
+  border: 1px solid #07b810;
 }
+
 .second {
-  height: 0.15rem;
-  background: #264df9;
+  width: 65px;
+  height: 2px;
+  border: 1px solid #ff0808;
 }
 
 .center-dot {
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
   position: absolute;
-  width: clamp(8px, 1.5vw, 12px);
-  height: clamp(8px, 1.5vw, 12px);
-  background: #000000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
 }
 
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 1024px) {
-  nav {
-    gap: 4vw;
-  }
-  .clock-container {
-    gap: 4vw;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 70px;
-  }
-  .clock-card {
-    width: 80%;
-    padding: 2rem;
-  }
-  #timer {
-    font-size: 2rem;
-  }
-  #date {
-    font-size: 0.9rem;
-  }
-  .analog-clock {
-    width: 40vw;
-    height: 40vw;
-  }
-  nav {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .clock-card {
-    width: 90%;
-    padding: 1.5rem;
-  }
-  #timer {
-    font-size: 1.6rem;
-  }
-  #date {
-    font-size: 0.8rem;
-  }
-  .analog-clock {
-    width: 60vw;
-    height: 60vw;
-  }
-  nav {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-
-/* =========================
-   FONT & RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto Slab', 'Poppins', sans-serif;
-}
-
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 nav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   z-index: 999;
 }
 
 .nav-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  padding: 14px 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2b2e4a;
 }
 
 .nav-links {
@@ -247,33 +201,31 @@ nav {
   list-style: none;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: #2b2e4a;
+  color: var(--text-dark);
   position: relative;
-  transition: 0.3s;
 }
 
-.nav-links li a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -4px;
+  left: 0;
   width: 0;
   height: 2px;
-  background: #f92672;
+  background: var(--accent);
   transition: 0.3s;
 }
 
-.nav-links li a:hover::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
-/* =========================
-   HAMBURGER MENU
-========================= */
+/* =========================================================
+   HAMBURGER
+========================================================= */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -284,57 +236,40 @@ nav {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: #2b2e4a;
-  border-radius: 2px;
-  transition: all 0.3s;
+  background: var(--text-dark);
+  transition: 0.3s;
 }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 @media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    height: calc(100% - 70px);
-    width: 200px;
-    background: rgba(255,255,255,0.95);
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    transition: 0.3s;
-  }
-
-  .nav-links.open {
-    right: 0;
+  body {
+    padding-top: 80px;
   }
 
   .hamburger {
     display: flex;
   }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: rgba(105, 154, 226, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+  }
+
+  .nav-links.open {
+    right: 16px;
+  }
 }
 
 @media (max-width: 480px) {
-  .nav-links {
-    width: 160px;
-  }
-  .nav-links li a {
-    font-size: 1rem;
-  }
-  .logo {
-    font-size: 1.5rem;
+  .clock-card {
+    width: 95%;
   }
 }

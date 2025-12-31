@@ -1,53 +1,63 @@
-/* =========================
+/* =========================================================
+   VARIABLES
+========================================================= */
+:root {
+  --bg-main: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  --text-dark: #2b2e4a;
+  --accent: #f92672;
+}
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
+/* =========================================================
    BODY
-========================= */
+========================================================= */
 body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f3f4f7, #e3e6ee);
+  background: var(--bg-main);
+  color: var(--text-dark);
+
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 80px;
+
+  padding: 100px 16px 32px;
 }
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 nav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   z-index: 999;
 }
 
 .nav-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  padding: 14px 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2b2e4a;
 }
 
 .nav-links {
@@ -56,33 +66,31 @@ nav {
   list-style: none;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: #2b2e4a;
+  color: var(--text-dark);
   position: relative;
-  transition: 0.3s;
 }
 
-.nav-links li a::after {
+.nav-links a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
   width: 0;
   height: 2px;
-  background: #f92672;
+  background: var(--accent);
   transition: 0.3s;
 }
 
-.nav-links li a:hover::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
-/* =========================
-   HAMBURGER MENU
-========================= */
+/* =========================================================
+   HAMBURGER
+========================================================= */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -93,38 +101,22 @@ nav {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: #2b2e4a;
-  border-radius: 2px;
-  transition: all 0.3s;
+  background: var(--text-dark);
 }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-
-/* =========================
-   CARD
-========================= */
+/* =========================================================
+   ALARM CARD
+========================================================= */
 .card {
   position: relative;
-  padding: 40px 50px;
+  width: clamp(280px, 36vw, 480px);
+  padding: clamp(28px, 4vw, 48px);
+
   border-radius: 28px;
-  background: rgba(255,255,255,0.65);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   text-align: center;
   overflow: hidden;
-  margin: 20px;
-  width: 480px;
-  z-index: 1;
 }
 
 .card::before {
@@ -132,7 +124,13 @@ nav {
   position: absolute;
   inset: -6px;
   border-radius: 34px;
-  background: conic-gradient(#6a11cb, #2575fc, #20e3b2, #fddb92, #6a11cb);
+  background: conic-gradient(
+    #6a11cb,
+    #2575fc,
+    #20e3b2,
+    #fddb92,
+    #6a11cb
+  );
   animation: spin 20s linear infinite;
   z-index: -1;
 }
@@ -142,8 +140,7 @@ nav {
   position: absolute;
   inset: 6px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.75);
-  z-index: 0;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .card > * {
@@ -151,132 +148,55 @@ nav {
   z-index: 1;
 }
 
-/* =========================
-   FORM ELEMENTS
-========================= */
+/* =========================================================
+   FORM
+========================================================= */
 label {
   display: block;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-weight: 500;
-  color: #2b2e4a;
 }
 
-input[type="time"], input[type="date"] {
+input[type="time"],
+input[type="date"] {
   width: 100%;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
   border: none;
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.08), inset -4px -4px 10px #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   font-size: 1rem;
 }
 
 button {
-  background: #f3f4f7;
-  color: #2b2e4a;
-  border: none;
-  border-radius: 18px;
-  padding: 14px 30px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 6px 6px 12px rgba(0,0,0,0.1), -6px -6px 12px #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 10px;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 10px 10px 20px rgba(0,0,0,0.15), -10px -10px 20px #ffffff;
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px #ffffff;
-}
-
-/* =========================
-   ALARM LIST
-========================= */
-#alarm-list {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.alarm-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  padding: 8px 12px;
-  background: rgba(243,244,247,0.5);
-  border-radius: 12px;
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: #2b2e4a;
+  padding: 14px;
+  border-radius: 18px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 @media (max-width: 768px) {
-  .card {
-    width: 280px;
-    padding: 30px 30px;
+  .hamburger {
+    display: flex;
   }
 
-  input[type="time"], input[type="date"] {
-    font-size: 0.9rem;
-  }
-
-  nav {
-    gap: 20px;
-  }
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  nav{
-    background: rgba(255, 255, 255, 0.65);
-  }
   .nav-links {
     position: fixed;
     top: 70px;
     right: -100%;
-    height: calc(100% - 70px);
-    width: 200px;
-    background: rgba(255,255,255,0.95);
     flex-direction: column;
-    gap: 20px;
+    background: rgba(105, 154, 226, 0.95);
     padding: 20px;
+    border-radius: 20px;
     transition: 0.3s;
   }
 
   .nav-links.open {
-    right: 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-}
-
-@media (max-width: 480px) {
-  nav{
-    background: rgba(255, 255, 255, 0.65);
-  }
-  .nav-links {
-    width: 160px;
-  }
-  .nav-links li a {
-    font-size: 1rem;
-  }
-  .logo {
-    font-size: 1.5rem;
+    right: 16px;
   }
 }
