@@ -1,0 +1,88 @@
+/* =========================================================
+   GLOBAL FOOTER
+========================================================= */
+.app-footer {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+
+  background: rgba(15, 23, 42, 0.4);
+  /* Transparent dark base */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+/* Prevent footer overlap on all pages */
+body {
+  padding-bottom: 120px !important;
+}
+
+.app-footer:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.reserved-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reserved-text span {
+  color: var(--accent-purple);
+  font-weight: 700;
+}
+
+.developer-text {
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  position: relative;
+}
+
+/* Subtle separator for mobile wrapping if needed, but flex row usually fits */
+@media (max-width: 480px) {
+  .app-footer {
+    width: 95%;
+    bottom: 10px;
+    padding: 10px 16px;
+    flex-direction: column;
+    gap: 4px;
+    border-radius: 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}

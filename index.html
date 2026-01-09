@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Clock</title>
-<link rel="stylesheet" href="css/home.css">
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Clock</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<!-- <div id="navbar-placeholder"></div> -->
+  <!-- NAVBAR -->
+  <!-- <div id="navbar-placeholder"></div> -->
 
-<nav>
-  <div class="nav-container">
-    <div class="logo">Live Clock</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="stopwatch.html">Stopwatch</a></li>
-      <li><a href="countdown.html">Countdown</a></li>
-      <li><a href="alarm.html">Alarm</a></li>
-    </ul>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Live Clock</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stopwatch.html">Stopwatch</a></li>
+        <li><a href="countdown.html">Countdown</a></li>
+        <li><a href="alarm.html">Alarm</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 
-<!-- CLOCK CONTAINER -->
-<div class="clock-container">
+  <!-- CLOCK CONTAINER -->
+  <button id="sound-toggle" class="sound-toggle active" aria-label="Toggle Ticking Sound">
+    <span class="icon">🔊</span>
+    <span class="text">Sound On</span>
+  </button>
+  <div class="clock-container">
 
-  <!-- DIGITAL CLOCK CARD -->
-  <div class="clock-card">
-    <div id="timer">00:00:00 AM</div>
-    <div id="date">Loading...</div>
-  </div>
 
-  <!-- ANALOG CLOCK CARD -->
-  <div class="clock-card">
-    <div class="analog-clock">
-      <div id="hour-hand" class="hand hour"></div>
-      <div id="minute-hand" class="hand minute"></div>
-      <div id="second-hand" class="hand second"></div>
-      <div class="center-dot"></div>
+    <!-- DIGITAL CLOCK CARD -->
+    <div class="clock-card">
+      <div id="timer">00:00:00 AM</div>
+      <div id="date">Loading...</div>
     </div>
+
+    <!-- ANALOG CLOCK CARD -->
+    <div class="clock-card">
+      <div class="analog-clock">
+        <div class="number num-12">12</div>
+        <div class="number num-3">3</div>
+        <div class="number num-6">6</div>
+        <div class="number num-9">9</div>
+
+        <!-- Hour Dots -->
+        <div class="clock-dot dot-1"></div>
+        <div class="clock-dot dot-2"></div>
+        <div class="clock-dot dot-4"></div>
+        <div class="clock-dot dot-5"></div>
+        <div class="clock-dot dot-7"></div>
+        <div class="clock-dot dot-8"></div>
+        <div class="clock-dot dot-10"></div>
+        <div class="clock-dot dot-11"></div>
+
+        <div id="hour-hand" class="hand hour"></div>
+        <div id="minute-hand" class="hand minute"></div>
+        <div id="second-hand" class="hand second"></div>
+        <div class="center-dot"></div>
+      </div>
+    </div>
+
   </div>
 
-</div>
 
+  <!-- GLOBAL FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="reserved-text"> <span>&copy; 2025</span></div>
+      <div class="developer-text">Developer : Faiz Murad</div>
+    </div>
+  </footer>
 
-<script src="script/home.js"></script>
+  <script src="script/home.js"></script>
 </body>
+
 </html>

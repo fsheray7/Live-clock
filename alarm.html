@@ -1,45 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alarm</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/alarm.css">
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/alarm.css">
+  <link rel="stylesheet" href="css/alarm_modal.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-container">
-    <div class="logo">Live Clock</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="stopwatch.html">Stopwatch</a></li>
-      <li><a href="countdown.html">Countdown</a></li>
-      <li><a href="alarm.html">Alarm</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Live Clock</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stopwatch.html">Stopwatch</a></li>
+        <li><a href="countdown.html">Countdown</a></li>
+        <li><a href="alarm.html">Alarm</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ALARM CARD -->
+  <div class="card">
+    <h2>Set Alarm</h2>
+    <label for="alarm-time">Time:</label>
+    <input type="time" id="alarm-time">
+    <div class="input-group">
+      <label for="alarm-date">Date (Optional for recurring)</label>
+      <input type="date" id="alarm-date">
+    </div>
+
+    <!-- Day Selection -->
+    <div class="day-selection">
+      <label>Repeat On</label>
+      <div class="days-container">
+        <button class="day-btn" data-day="0">S</button>
+        <button class="day-btn" data-day="1">M</button>
+        <button class="day-btn" data-day="2">T</button>
+        <button class="day-btn" data-day="3">W</button>
+        <button class="day-btn" data-day="4">T</button>
+        <button class="day-btn" data-day="5">F</button>
+        <button class="day-btn" data-day="6">S</button>
+      </div>
+      <div class="quick-select">
+        <button id="btn-everyday">Everyday</button>
+        <button id="btn-weekend">Weekend</button>
+        <button id="btn-weekdays">Weekdays</button>
+      </div>
+    </div>
+
+    <!-- Sound Selection -->
+    <div class="sound-selection">
+      <label for="alarm-sound">Alarm Sound</label>
+      <div class="sound-controls">
+        <select id="alarm-sound">
+          <option value="pirates">Pirates Theme</option>
+          <option value="got">Game of Thrones</option>
+          <option value="johnwick">John Wick Mode</option>
+          <option value="classic">Classic Alarm</option>
+          <option value="digital">Digital Beep</option>
+          <option value="phone">Old Phone</option>
+          <option value="ship">Ship Bell</option>
+          <option value="piano">Piano Melody</option>
+          <option value="harp">Harp Strum</option>
+          <option value="rooster">Morning Rooster</option>
+        </select>
+        <button id="preview-sound" class="icon-btn" aria-label="Preview Sound">▶</button>
+      </div>
+      <p
+        style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem; display: flex; align-items: center; gap: 5px;">
+        ⚠️ <span style="opacity: 0.8">For Themes, place <strong>pirates.mp3</strong>, <strong>got.mp3</strong>, etc. in
+          'audio/' folder.</span>
+      </p>
+    </div>
+
+    <button id="set-alarm" class="set-btn">Set Alarm</button>
+
+    <div id="alarm-list"></div>
+  </div>
+
+  <!-- ALARM MODAL -->
+  <div id="alarm-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Alarm Ringing!</h3>
+      <div id="alarm-display-time">00:00</div>
+      <div class="modal-buttons">
+        <button id="snooze-btn">Snooze (5m)</button>
+        <button id="stop-btn">Stop</button>
+      </div>
     </div>
   </div>
-</nav>
 
 
-<!-- ALARM CARD -->
-<div class="card">
-  <h2>Set Alarm</h2>
-  <label for="alarm-time">Time:</label>
-  <input type="time" id="alarm-time">
-  <label for="alarm-date">Date:</label>
-  <input type="date" id="alarm-date">
-  <button id="set-alarm">Set Alarm</button>
+  <!-- GLOBAL FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="reserved-text"> <span>&copy; 2025</span></div>
+      <div class="developer-text">Developer : Faiz Murad</div>
+    </div>
+  </footer>
 
-  <div id="alarm-list"></div>
-</div>
-
-<script src="script/alarm.js"></script>
+  <script src="script/alarm.js"></script>
 </body>
+
 </html>

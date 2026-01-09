@@ -1,176 +1,69 @@
 /* =========================================================
-   VARIABLES & RESET
-========================================================= */
-:root {
-  --bg-main: linear-gradient(135deg, #f3f4f7, #e3e6ee);
-  --glass: rgba(255, 255, 255, 0.7);
-  --glass-strong: rgba(255, 255, 255, 0.95);
-  --text-dark: #2b2e4a;
-  --accent: #f92672;
-  --radius-lg: 28px;
-  --radius-md: 18px;
-  --transition: 0.3s ease;
-  --shadow-soft: 6px 6px 14px rgba(0, 0, 0, 0.1),
-    -6px -6px 14px #ffffff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* =========================================================
-   BODY
+   STOPWATCH STYLES
 ========================================================= */
 body {
-  min-height: 100vh;
+  /* Layout centering inherited from variables/common if I put it there, 
+     but I need to ensure it here too */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", sans-serif;
-  background: var(--bg-main);
-  color: var(--text-dark);
+  padding-top: 80px;
+  /* Nav height */
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
-nav {
-  position: fixed;
-  inset: 0 0 auto 0;
-  width: 100%;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 14px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.7rem;
-  font-weight: 700;
-}
-
-/* =========================================================
-   NAV LINKS
-========================================================= */
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  position: relative;
-  transition: color var(--transition);
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width var(--transition);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* =========================================================
-   HAMBURGER
-========================================================= */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: var(--text-dark);
-  border-radius: 4px;
-  transition: var(--transition);
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* =========================================================
-   APP CARD
-========================================================= */
 .app {
   position: relative;
-  padding: 56px 64px;
-  border-radius: var(--radius-lg);
-  background: #ffffff;
+  width: clamp(300px, 90vw, 500px);
+  padding: 4rem 2rem;
+  border-radius: 30px;
+
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   z-index: 1;
 }
 
+/* Decoration Glow */
 .app::before {
-  content: "";
+  content: '';
   position: absolute;
-  inset: -6px;
-  border-radius: calc(var(--radius-lg) + 6px);
-  background: conic-gradient(
-    #6a11cb,
-    #2575fc,
-    #20e3b2,
-    #fddb92,
-    #6a11cb
-  );
-  animation: spin 20s linear infinite;
+  inset: -1px;
   z-index: -1;
-}
-
-.app::after {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: calc(var(--radius-lg) - 6px);
-  background: #ffffff;
-  z-index: 0;
-}
-
-.app > * {
-  position: relative;
-  z-index: 1;
+  border-radius: 31px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
 }
 
 /* =========================================================
-   TIMER
+   TIMER DISPLAY
 ========================================================= */
 #timer {
-  font-size: 5rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin-bottom: 36px;
+  /* Reduced min size to fit "00:00:00.00" on mobile */
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+  /* Purple glow */
+  letter-spacing: 2px;
+  word-break: break-all;
+  /* Prevent overflow issue if somehow too long */
+  line-height: 1.1;
+}
+
+@media (max-width: 400px) {
+  #timer {
+    font-size: 2rem;
+    /* Force smaller on very narrow devices */
+    letter-spacing: 1px;
+  }
 }
 
 /* =========================================================
@@ -179,95 +72,96 @@ nav {
 #buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 16px 40px;
-  font-size: 1.3rem;
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  border: none;
-  background: #f3f4f7;
-  color: var(--text-dark);
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition);
+  transition: var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 button:hover {
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 button:active {
-  transform: translateY(0);
-  box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.15),
-    inset -6px -6px 12px #ffffff;
+  transform: translateY(-1px);
 }
 
-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+/* Individual Button Styles */
+#start {
+  background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+  border: none;
 }
 
+#start:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+}
 
+#stop {
+  background: linear-gradient(135deg, var(--accent-pink), #e11d48);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+  border: none;
+}
+
+#stop:hover {
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+}
+
+#reset {
+  background: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+#reset:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    width: 220px;
-     height:fit-content;
-    background: rgba(105, 154, 226, 0.98);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: 24px;
-    gap: 20px;
-    transition: var(--transition);
-    border-radius: 20px;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
+@media (max-width: 480px) {
   .app {
-    padding: 40px 32px;
+    width: 95%;
+    padding: 3rem 1rem;
   }
 
   #timer {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   button {
-    padding: 14px 28px;
-    font-size: 1.1rem;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    flex: 1;
+    /* Distribute space equally on small screens */
+    min-width: 80px;
+    /* Don't get too small */
   }
 }
 
-@media (max-width: 480px) {
-  .app {
-    padding: 32px 24px;
-  }
-
-  #timer {
-    font-size: 2.8rem;
+@media (max-width: 350px) {
+  #buttons {
+    flex-direction: column;
+    width: 100%;
   }
 
   button {
-    padding: 12px 20px;
-    font-size: 1rem;
-  }
-
-  .logo {
-    font-size: 1.5rem;
+    width: 100%;
   }
 }
