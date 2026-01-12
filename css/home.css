@@ -128,12 +128,12 @@ body {
    ANALOG CLOCK
 ========================================================= */
 .analog-clock {
-  width: 250px;
-  height: 250px;
+  --clock-size: 250px;
+  width: var(--clock-size);
+  height: var(--clock-size);
   /* Allow scaling down on tiny screens */
   max-width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 50%;
   border: 2px solid var(--glass-border);
   background: rgba(15, 23, 42, 0.4);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
@@ -141,13 +141,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Handle mobile scaling */
+  border-radius: 50%;
 }
 
 @media (max-width: 480px) {
   .analog-clock {
-    width: 200px;
-    height: 200px;
+    --clock-size: 200px;
   }
 }
 
@@ -165,34 +164,33 @@ body {
 .number {
   position: absolute;
   color: var(--text-primary);
-  font-size: 1.5rem;
+  font-size: calc(var(--clock-size) * 0.06);
   font-weight: 700;
   text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
   z-index: 2;
-  /* Above ticks, below hands */
   font-family: inherit;
 }
 
 .num-12 {
-  top: 15px;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .num-3 {
-  right: 15px;
+  right: 6%;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .num-6 {
-  bottom: 15px;
+  bottom: 6%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .num-9 {
-  left: 15px;
+  left: 6%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -211,37 +209,37 @@ body {
 }
 
 /* Positioning using rotation and translation from center */
-/* Radius approx 105px (Clock is 250px, so 125px radius. Numbers are at ~15px inset. Dots should align) */
+/* Radius approx 42% (Clock is 100%. Numbers are at ~6% inset. Dots should align) */
 .dot-1 {
-  transform: rotate(30deg) translate(0, -100px);
+  transform: rotate(30deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-2 {
-  transform: rotate(60deg) translate(0, -100px);
+  transform: rotate(60deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-4 {
-  transform: rotate(120deg) translate(0, -100px);
+  transform: rotate(120deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-5 {
-  transform: rotate(150deg) translate(0, -100px);
+  transform: rotate(150deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-7 {
-  transform: rotate(210deg) translate(0, -100px);
+  transform: rotate(210deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-8 {
-  transform: rotate(240deg) translate(0, -100px);
+  transform: rotate(240deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-10 {
-  transform: rotate(300deg) translate(0, -100px);
+  transform: rotate(300deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .dot-11 {
-  transform: rotate(330deg) translate(0, -100px);
+  transform: rotate(330deg) translate(0, calc(var(--clock-size) * -0.4));
 }
 
 .hand {
@@ -255,21 +253,21 @@ body {
 
 .hour {
   width: 6px;
-  height: 60px;
+  height: calc(var(--clock-size) * 0.24);
   background: var(--text-primary);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .minute {
   width: 4px;
-  height: 85px;
+  height: calc(var(--clock-size) * 0.34);
   background: var(--accent-cyan);
   box-shadow: 0 0 10px var(--accent-cyan);
 }
 
 .second {
   width: 2px;
-  height: 100px;
+  height: calc(var(--clock-size) * 0.4);
   background: var(--accent-pink);
   box-shadow: 0 0 10px var(--accent-pink);
   z-index: 3;
