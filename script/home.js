@@ -27,24 +27,38 @@ function initAudio() {
   }
 }
 
-// Try to auto-start on load (Best effort for "High Engagement" users)
+// Aggressive auto-start on FIRST interaction
+const interactionEvents = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'];
+
+function enableAudio() {
+  initAudio();
+  if (audioContext && audioContext.state === 'suspended') {
+    audioContext.resume().then(() => {
+      console.log("AudioContext resumed successfully.");
+      // Remove all listeners once audio is started
+      interactionEvents.forEach(event => {
+        document.removeEventListener(event, enableAudio);
+      });
+    }).catch(err => {
+      console.log("Audio resume failed:", err);
+    });
+  }
+}
+
+// Add listeners for all common interactions
+interactionEvents.forEach(event => {
+  document.addEventListener(event, enableAudio, { once: false });
+});
+
+// Best effort for load
 window.addEventListener('load', () => {
   initAudio();
   if (audioContext && audioContext.state === 'suspended') {
     audioContext.resume().catch(() => {
-      // Expected failure in Chrome/Edge until user interacts
-      console.log("Autoplay blocked by browser policy. Waiting for interaction.");
+      console.log("Autoplay blocked. Waiting for user interaction...");
     });
   }
 });
-
-// Auto-start audio on first user interaction (Fallback)
-document.addEventListener('click', function enableAudio() {
-  initAudio();
-  if (audioContext && audioContext.state === 'suspended') {
-    audioContext.resume();
-  }
-}, { once: false });
 
 // Play Tick Sound
 function playTick() {
