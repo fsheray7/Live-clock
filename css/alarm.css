@@ -1,5 +1,5 @@
 /* =========================================================
-   ALARM STYLES
+   ALARM STYLES (GRID VERSION)
 ========================================================= */
 
 * {
@@ -17,6 +17,7 @@ body {
 /* =========================================================
    ALARM CARD
 ========================================================= */
+
 .card {
   margin-top: 120px;
   position: relative;
@@ -31,9 +32,11 @@ body {
 
   border-radius: 30px;
   text-align: center;
+
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
   z-index: 1;
 }
 
@@ -49,6 +52,7 @@ body {
 /* =========================================================
    FORM ELEMENTS
 ========================================================= */
+
 label {
   display: block;
   text-align: left;
@@ -70,9 +74,8 @@ input[type="date"] {
   font-size: 1.1rem;
   font-family: var(--font-main);
   margin-bottom: 1.5rem;
-  transition: var(--transition-fast);
+  transition: 0.3s ease;
   color-scheme: dark;
-  /* Dark calendar/time picker */
 }
 
 input:focus {
@@ -80,6 +83,10 @@ input:focus {
   border-color: var(--accent-purple);
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
+
+/* =========================================================
+   BUTTON
+========================================================= */
 
 button#set-alarm {
   width: 100%;
@@ -94,8 +101,7 @@ button#set-alarm {
   background: linear-gradient(135deg, var(--accent-purple), #7c3aed);
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
   cursor: pointer;
-  transition: var(--transition-medium);
-  margin-top: 0.5rem;
+  transition: 0.3s ease;
 }
 
 button#set-alarm:hover {
@@ -103,28 +109,15 @@ button#set-alarm:hover {
   box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
 }
 
-button#set-alarm:active {
-  transform: translateY(0);
-}
-
-/* Day Selection */
-.day-selection {
-  margin-bottom: 1.5rem;
-}
-
-.day-selection label,
-.sound-selection label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
+/* =========================================================
+   DAY SELECTION
+========================================================= */
 
 .days-container {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .day-btn {
@@ -138,49 +131,20 @@ button#set-alarm:active {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: 0.2s ease;
   font-size: 0.8rem;
   font-weight: 600;
-}
-
-.day-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
 }
 
 .day-btn.active {
   background: var(--accent-cyan);
   color: #000;
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
 }
 
-.quick-select {
-  display: flex;
-  gap: 10px;
-}
-
-.quick-select button {
-  flex: 1;
-  padding: 6px;
-  font-size: 0.75rem;
-  background: transparent;
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.quick-select button:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-}
-
-/* Sound Selection */
-.sound-selection {
-  margin-bottom: 2rem;
-}
+/* =========================================================
+   SOUND
+========================================================= */
 
 .sound-controls {
   display: flex;
@@ -194,110 +158,87 @@ select {
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   color: var(--text-primary);
-  font-family: inherit;
-  outline: none;
-  cursor: pointer;
-}
-
-select option {
-  background: var(--bg-main);
-  /* Fallback for dropdowns */
-  color: var(--text-primary);
-}
-
-.icon-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  color: var(--accent-green);
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-}
-
-.icon-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
 }
 
 /* =========================================================
-   ALARM LIST
+   🔥 ALARM LIST (GRID LAYOUT)
 ========================================================= */
+
 #alarm-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
+
   margin-top: 1rem;
-  max-height: 200px;
+  max-height: 320px;
   overflow-y: auto;
   padding-right: 5px;
 }
 
+/* =========================================================
+   ALARM CARD ITEM
+========================================================= */
+
 .alarm-item {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+
   padding: 1rem;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 1rem;
-  color: var(--text-primary);
-  transition: background 0.2s;
+
+  transition: 0.2s ease;
+  gap: 0.8rem;
 }
 
 .alarm-item:hover {
   background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
 }
+
+/* =========================================================
+   ALARM INFO
+========================================================= */
 
 .alarm-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   text-align: left;
 }
 
 .alarm-time {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1;
 }
 
 .alarm-days,
 .alarm-date {
   font-size: 0.85rem;
   color: var(--accent-cyan);
-  font-weight: 500;
 }
 
-.alarm-sound-badge {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  display: inline-block;
-  margin-top: 2px;
-}
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .actions {
   display: flex;
+  justify-content: flex-end;
   gap: 8px;
+  width: 100%;
 }
 
 .actions button {
-  width: auto;
   padding: 6px 12px;
   font-size: 0.8rem;
   border-radius: 8px;
-  margin-top: 0;
-  cursor: pointer;
   border: none;
   font-weight: 600;
-  transition: var(--transition-fast);
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .delete-btn {
@@ -306,62 +247,37 @@ select option {
 }
 
 .delete-btn:hover {
-  background: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.4);
   color: #fff;
 }
 
 .edit-btn {
   background: rgba(234, 179, 8, 0.2);
   color: #facc15;
-  /* Yellow */
 }
 
 .edit-btn:hover {
-  background: rgba(234, 179, 8, 0.3);
+  background: rgba(234, 179, 8, 0.4);
   color: #fff;
 }
 
 /* =========================================================
-   RESPONSIVE ALARM
+   RESPONSIVE
 ========================================================= */
+
 @media (max-width: 768px) {
   .card {
     padding: 1.5rem;
     width: 95%;
   }
 
-  .days-container {
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .day-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 0.8rem;
-  }
-
-  .sound-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #preview-sound {
-    width: 100%;
-    margin-top: 5px;
+  #alarm-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
-  .alarm-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .actions {
-    width: 100%;
-    justify-content: flex-end;
+  #alarm-list {
+    grid-template-columns: 1fr;
   }
 }
